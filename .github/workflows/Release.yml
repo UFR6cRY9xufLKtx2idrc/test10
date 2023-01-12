@@ -9,6 +9,7 @@ on:
 env:
   go_version: '1.17'
   flutter_channel: 'stable'
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
 
