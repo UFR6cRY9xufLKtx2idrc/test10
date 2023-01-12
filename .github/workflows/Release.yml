@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  go_version: '1.18'
+  go_version: '1.17'
   flutter_channel: 'stable'
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -104,7 +104,7 @@ jobs:
         if: ( matrix.config.target == 'android-arm32' || matrix.config.target == 'android-arm64' || matrix.config.target == 'android-x86_64' )
         uses: actions/setup-java@v3
         with:
-          distribution: 'zulu'
+          distribution: 'temurin'
           java-version: 8
           check-latest: true
 
