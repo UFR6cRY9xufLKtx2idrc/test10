@@ -32,9 +32,10 @@ jobs:
           ref: 'master'
       - name: Checkout submodules
         run: git submodule update --init --recursive
-      - uses: actions/setup-go@v2
+      - uses: actions/setup-go@v3
         with:
           go-version: ${{ env.go_version }}
+          check-latest: true
       - name: Check release
         run: |
           cd ci
@@ -81,9 +82,10 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Setup golang
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v3
         with:
           go-version: ${{ env.go_version }}
+          check-latest: true
 
       - id: check_asset
         name: Check asset
@@ -102,8 +104,9 @@ jobs:
         if: ( matrix.config.target == 'android-arm32' || matrix.config.target == 'android-arm64' || matrix.config.target == 'android-x86_64' )
         uses: actions/setup-java@v3
         with:
-          java-version: 8
           distribution: 'zulu'
+          java-version: 8
+          check-latest: true
 
       - name: Setup android tools (Android)
         if: ( matrix.config.target == 'android-arm32' || matrix.config.target == 'android-arm64' || matrix.config.target == 'android-x86_64' )
