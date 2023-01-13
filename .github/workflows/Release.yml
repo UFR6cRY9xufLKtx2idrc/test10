@@ -73,17 +73,17 @@ jobs:
             host: ubuntu-latest
             flutter_version: '3.3.10'
             artifact_name: release-apk-arm32
-            artifact_path: build/app/outputs/apk/release/*.apk
+            artifact_path: build/app/outputs/apk/release/app-release.apk
           - target: android-arm64
             host: ubuntu-latest
             flutter_version: '3.3.10'
             artifact_name: release-apk-arm64
-            artifact_path: build/app/outputs/apk/release/*.apk
+            artifact_path: build/app/outputs/apk/release/app-release.apk
           - target: android-x86_64
             host: ubuntu-latest
             flutter_version: '3.3.10'
             artifact_name: release-apk-x86_64
-            artifact_path: build/app/outputs/apk/release/*.apk
+            artifact_path: build/app/outputs/apk/release/app-release.apk
 
     runs-on: ${{ matrix.config.host }}
 
@@ -129,7 +129,7 @@ jobs:
           packages: |
             platform-tools
             platforms;android-32
-            build-tools;33.0.1
+            build-tools;33.0.2
             ndk;25.1.8937393
 
       - name: Setup msys2 (Windows)
