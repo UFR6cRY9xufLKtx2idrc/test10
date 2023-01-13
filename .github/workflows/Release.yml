@@ -52,24 +52,38 @@ jobs:
           - target: linux
             host: ubuntu-latest
             flutter_version: '2.10.5'
+            artifact_name: release-linux
+            artifact_path: build/linux/*.zip
           - target: windows
             host: windows-latest
             flutter_version: '2.10.5'
+            artifact_name: release-windows
+            artifact_path: build/windows/*.zip
           - target: macos
             host: macos-latest
             flutter_version: '2.10.5'
+            artifact_name: release-mac
+            artifact_path: build/macos/*.zip
           - target: ios
             host: macos-latest
             flutter_version: '3.3.10'
+            artifact_name: release-ios
+            artifact_path: build/ios/ipa/*.ipa
           - target: android-arm32
             host: ubuntu-latest
             flutter_version: '3.3.10'
+            artifact_name: release-apk-arm32
+            artifact_path: build/app/outputs/apk/release/*.apk
           - target: android-arm64
             host: ubuntu-latest
             flutter_version: '3.3.10'
+            artifact_name: release-apk-arm64
+            artifact_path: build/app/outputs/apk/release/*.apk
           - target: android-x86_64
             host: ubuntu-latest
             flutter_version: '3.3.10'
+            artifact_name: release-apk-x86_64
+            artifact_path: build/app/outputs/apk/release/*.apk
 
     runs-on: ${{ matrix.config.host }}
 
@@ -207,6 +221,12 @@ jobs:
         if: matrix.config.target == 'android-x86_64'
         run: |
           sh scripts/build-apk-x64.sh
+
+      - name: Publish Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.artifact_name }}
+          path: ${{ matrix.artifact_path }}
 
       - name: Sign APK (Android)
         if: ( matrix.config.target == 'android-arm32' || matrix.config.target == 'android-arm64' || matrix.config.target == 'android-x86_64' )
