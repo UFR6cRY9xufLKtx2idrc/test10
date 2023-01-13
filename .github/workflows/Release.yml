@@ -119,7 +119,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: 11
+          java-version: 19
           check-latest: true
 
       - name: Setup android tools (Android)
@@ -227,6 +227,12 @@ jobs:
         with:
           name: ${{ matrix.config.artifact_name }}
           path: ${{ matrix.config.artifact_path }}
+
+      - name: Releases
+        uses: softprops/action-gh-release@v1
+        with:
+          body: Bump Version
+          files: ${{ matrix.config.artifact_path }}
 
       - name: Sign APK (Android)
         if: ( matrix.config.target == 'android-arm32' || matrix.config.target == 'android-arm64' || matrix.config.target == 'android-x86_64' )
