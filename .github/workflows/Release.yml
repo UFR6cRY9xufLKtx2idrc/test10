@@ -6,6 +6,10 @@ on:
       - "*"
   workflow_dispatch:
 
+permissions:
+  id-token: write
+  contents: write
+
 env:
   go_version: '1.17'
   flutter_channel: 'stable'
@@ -119,7 +123,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: 16
+          java-version: 17
           check-latest: true
 
       - name: Setup android tools (Android)
