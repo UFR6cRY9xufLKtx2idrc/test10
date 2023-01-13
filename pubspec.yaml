@@ -25,7 +25,7 @@ dependencies:
   another_xlider: ^1.1.2
   modal_bottom_sheet: ^2.0.0
   app_links: ^3.4.1
-  flutter_inappwebview: ^5.5.0+2
+  flutter_inappwebview: ^5.7.2+3
   permission_handler: ^10.1.0
 
 dev_dependencies:
