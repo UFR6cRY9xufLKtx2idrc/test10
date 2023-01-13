@@ -129,7 +129,7 @@ jobs:
           packages: |
             platform-tools
             platforms;android-32
-            build-tools;33.0.2
+            build-tools;33.0.1
             ndk;25.1.8937393
 
       - name: Setup msys2 (Windows)
