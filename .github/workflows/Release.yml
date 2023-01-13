@@ -87,7 +87,7 @@ jobs:
             host: ubuntu-latest
             flutter_version: '3.3.10'
             artifact_name: release-apk-x86_64
-            artifact_path: build/app/outputs/apk/release/nhentai-cross-android-arm32.apk
+            artifact_path: build/app/outputs/apk/release/nhentai-cross-android-x86_64.apk
 
     runs-on: ${{ matrix.config.host }}
 
